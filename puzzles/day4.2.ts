@@ -45,7 +45,7 @@ function main(): void {
     const rooms: string[] = data.trim().split("\n");
 
     // iterate over rooms and sum up sector ids
-    let result: number;
+    let result: number = 0;
 
     for (const room of rooms) {
         // extract letters and sector ids
