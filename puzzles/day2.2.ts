@@ -42,7 +42,7 @@ function execute(keypress: string, current: coordinate): string {
 function main(): void {
     // extract input
     const data: string = fs.readFileSync("../input/2", "utf-8");
-    const keypresses: string[] = data.split("\n");
+    const keypresses: string[] = data.trim().split("\n");
 
     // iterate over keypresses
     let result: string = "";

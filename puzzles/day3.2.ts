@@ -1,10 +1,9 @@
 import * as fs from "fs";
 
-function isTriangle(triangle: number[]): number {
-    let isCorrect: boolean;
+function isTriangle(triangle: number[]): boolean {
     triangle.sort((a, b) => a - b);
-    isCorrect = triangle[2] < triangle[0] + triangle[1];
-    return isCorrect ? 1 : 0;
+
+    return triangle[2] < triangle[0] + triangle[1];
 }
 
 function main(): void {
@@ -23,7 +22,7 @@ function main(): void {
     let result: number = 0;
 
     for (const triangle of triangles) {
-        result += isTriangle(triangle);
+        result += isTriangle(triangle) ? 1 : 0;
     }
 
     // print result

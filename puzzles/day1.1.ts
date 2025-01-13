@@ -3,11 +3,11 @@ import * as fs from "fs";
 // type alias
 type coordinate = [number, number];
 
-function getNewDir(currentDirNr: number, turn: string) {
+function getNewDirNr(currentDirNr: number, turn: string) {
     if (turn == "L")
-        return (((currentDirNr - 1) % 4) + 4) % 4;
+        return ((currentDirNr - 1) + 4) % 4;
     else
-        return (((currentDirNr + 1) % 4) + 4) % 4;
+        return (currentDirNr + 1) % 4;
 }
 
 function tupleAdd(t1: coordinate, t2: coordinate): coordinate {
@@ -20,8 +20,8 @@ function tupleMult(factor: number, t: coordinate): coordinate {
 
 function main(): void {
     // extract input
-    const data: string = fs.readFileSync("1", "utf-8");
-    const directions: string[] = data.split(", ")
+    const data: string = fs.readFileSync("../input/1", "utf-8");
+    const directions: string[] = data.trim().split(", ")
 
     // define coordinate type and directions
     const direction: coordinate[] = [[-1, 0], [0, 1], [1, 0], [0, -1]];
@@ -32,7 +32,7 @@ function main(): void {
     for (const dir of directions) {
         const turn: string = dir.slice(0, 1);
         const blocks: number = Number(dir.slice(1));
-        currentDirNr = getNewDir(currentDirNr, turn);
+        currentDirNr = getNewDirNr(currentDirNr, turn);
         place = tupleAdd(place, tupleMult(blocks, direction[currentDirNr]));
     }
 

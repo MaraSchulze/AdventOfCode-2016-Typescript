@@ -4,7 +4,7 @@ function getFrequencies(room: string): Map<string, number> {
     let frequencies: Map<string, number> = new Map<string, number>();
 
     for (const char of room) {
-        if (/[a-z, A-Z]/.test(char)) {
+        if (/[a-z]/.test(char)) {
             frequencies.set(char, (frequencies.get(char) || 0) + 1);
         }
     }
@@ -16,7 +16,7 @@ function getSectorId(room: string): number {
     let sectorIdAsString: string = "";
 
     for (const char of room) {
-        if (/[0-9]/.test(char)) {
+        if (/\d/.test(char)) {
             sectorIdAsString += char;
         }
     }
